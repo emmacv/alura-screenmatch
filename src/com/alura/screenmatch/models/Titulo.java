@@ -1,3 +1,5 @@
+package com.alura.screenmatch.models;
+
 public class Titulo {
     private String nombre;
     private int fechaDeLanzamiento;

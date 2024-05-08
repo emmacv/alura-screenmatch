@@ -1,3 +1,5 @@
+package com.alura.screenmatch.models;
+
 public class Serie extends Titulo {
     int temporadas;
     int episodiosPorTemporada;

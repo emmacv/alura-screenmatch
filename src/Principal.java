@@ -1,3 +1,12 @@
+import com.alura.screenmatch.calculos.CalculadoraDeTiempo;
+import com.alura.screenmatch.calculos.FiltroRecomendaciones;
+import com.alura.screenmatch.models.Episodio;
+import com.alura.screenmatch.models.Pelicula;
+import com.alura.screenmatch.models.Serie;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
 public class Principal {
     public static void main(String[] args) {
         Pelicula miPelicula = new Pelicula();
@@ -45,18 +54,17 @@ public class Principal {
         episodio.setTotalVisualizaciones(360);
 
         filtroDeRecomendacion.filtra(episodio);
+
+        var nuevaPelicula = new Pelicula();
+
+        nuevaPelicula.setNombre("El señor de los anillos");
+        nuevaPelicula.setDuracionEnMinutos(180);
+        nuevaPelicula.setFechaDeLanzamiento(2001);
+
+        ArrayList<Pelicula> myArrayList = new ArrayList<>();
+
+        myArrayList.add(nuevaPelicula);
+        myArrayList.add(nuevaPelicula);
+        System.out.println(myArrayList.get(0));
     }
-}
-
-interface I {
-    private void method() {
-
-    }
-
-    void method2();
-    int VAR =2;
-}
-
-class A {
-
 }

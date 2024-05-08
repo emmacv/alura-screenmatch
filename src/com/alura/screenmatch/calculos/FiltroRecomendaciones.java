@@ -1,5 +1,7 @@
+package com.alura.screenmatch.calculos;
+
 public class FiltroRecomendaciones {
-    public void filtra(Clasificacion clasdificacion) {
+    public void filtra(Clasificable clasdificacion) {
         if (clasdificacion.getClasification() >= 4) {
             System.out.println("Muy bien clasficada");
         } else if (clasdificacion.getClasification() >= 2) {
