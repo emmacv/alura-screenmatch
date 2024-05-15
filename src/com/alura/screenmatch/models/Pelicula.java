@@ -5,6 +5,14 @@ import com.alura.screenmatch.calculos.Clasificable;
 public class Pelicula extends Titulo implements Clasificable {
     private String director;
 
+    public Pelicula(String nombre, int fechaDeLanzamiento) {
+        super(nombre, fechaDeLanzamiento);
+    }
+
+    public Pelicula(String nombre) {
+        super(nombre);
+    }
+
     public String getDirector() {
         return director;
     }

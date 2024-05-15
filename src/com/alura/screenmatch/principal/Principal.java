@@ -1,3 +1,5 @@
+package com.alura.screenmatch.principal;
+
 import com.alura.screenmatch.calculos.CalculadoraDeTiempo;
 import com.alura.screenmatch.calculos.FiltroRecomendaciones;
 import com.alura.screenmatch.models.Episodio;
@@ -9,7 +11,7 @@ import java.util.Collection;
 
 public class Principal {
     public static void main(String[] args) {
-        Pelicula miPelicula = new Pelicula();
+        Pelicula miPelicula = new Pelicula("Encanto", 2021);
         miPelicula.setNombre("Encanto");
         miPelicula.setFechaDeLanzamiento(2021);
         miPelicula.setDuracionEnMinutos(120);
@@ -22,18 +24,14 @@ public class Principal {
         System.out.println(miPelicula.getTotalDelasEvaluaciones());
         System.out.println(miPelicula.calculaMedia());
 
-        Serie casaDragon = new Serie();
-        casaDragon.setNombre("La casa del dragón");
-        casaDragon.setFechaDeLanzamiento(2022);
+        Serie casaDragon = new Serie("La casa del dragón", 2022);
         casaDragon.setTemporadas(1);
         casaDragon.setMinutosPorEpisodio(50);
         casaDragon.setEpisodiosPorTemporada(10);
         casaDragon.muestraFichaTecnica();
         System.out.println(casaDragon.getDuracionEnMinutos());
 
-        Pelicula otraPelicula = new Pelicula();
-        otraPelicula.setNombre("Matrix");
-        otraPelicula.setFechaDeLanzamiento(1998);
+        Pelicula otraPelicula = new Pelicula("Matrix", 1998);
         otraPelicula.setDuracionEnMinutos(180);
 
         CalculadoraDeTiempo calculadora = new CalculadoraDeTiempo();
@@ -55,11 +53,8 @@ public class Principal {
 
         filtroDeRecomendacion.filtra(episodio);
 
-        var nuevaPelicula = new Pelicula();
-
-        nuevaPelicula.setNombre("El señor de los anillos");
+        var nuevaPelicula = new Pelicula("El señor de los anillos", 2001);
         nuevaPelicula.setDuracionEnMinutos(180);
-        nuevaPelicula.setFechaDeLanzamiento(2001);
 
         ArrayList<Pelicula> myArrayList = new ArrayList<>();
 
