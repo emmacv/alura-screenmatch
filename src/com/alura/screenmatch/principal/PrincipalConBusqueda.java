@@ -4,39 +4,33 @@ import com.alura.screenmatch.models.Pelicula;
 import com.alura.screenmatch.models.Serie;
 import com.alura.screenmatch.models.Titulo;
 
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.*;
 
 public class PrincipalConBusqueda {
     public static void main(String[] args) {
-        Pelicula miPelicula = new Pelicula("Encanto", 2021);
-        Serie casaDragon = new Serie("La casa del dragón", 2022);
-        Pelicula otraPelicula = new Pelicula("Matrix", 1998);
+        Scanner stdin = new Scanner(System.in);
 
-        List<Titulo> listaTitulos = new LinkedList<>();
+        System.out.println("Enter the film name");
+        String film = stdin.nextLine();
 
-        listaTitulos.add(miPelicula);
-        listaTitulos.add(otraPelicula);
-        listaTitulos.add(casaDragon);
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder().uri(URI.create("http://www.omdbapi.com/?t="+ film +"&apikey=d5bee84b")).build();
 
-        for (Titulo item : listaTitulos ) {
-            if (item instanceof Pelicula pelicula) {
-                System.out.println(pelicula.getClasification());
-            }
+        try {
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            System.out.println(response.body());
+        } catch (IOException | InterruptedException e) {
+            throw new RuntimeException(e);
         }
-
-        ArrayList<String> artistas = new ArrayList<>();
-
-        artistas.add("Penelope cruz");
-        artistas.add("Antonio banderas");
-        artistas.add("Ricardo Darin");
-
-        ArrayList artistas1 = (ArrayList<String>)artistas.clone();
-
-        Collections.sort(listaTitulos);
-
-        System.out.println(listaTitulos);
-        var comparator = Comparator.comparing(Titulo::getFechaDeLanzamiento);
-
-        listaTitulos.sort(comparator);
     }
+}
+
+
+class A {
+    public static interface B {}
 }
