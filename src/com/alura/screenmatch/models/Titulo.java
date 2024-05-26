@@ -1,5 +1,6 @@
 package com.alura.screenmatch.models;
 
+import com.alura.screenmatch.errors.NoRuntimeException;
 import com.google.gson.annotations.SerializedName;
 
 public class Titulo implements Comparable<Titulo> {
@@ -25,7 +26,15 @@ public class Titulo implements Comparable<Titulo> {
 
     public Titulo(TituloOMDB titulo) {
         this(titulo.title(), Integer.parseInt(titulo.year()));
-        this.duracionEnMinutos = Integer.parseInt(titulo.runtime().split("\\D{1,3}")[0]);
+        try {
+            if (titulo.runtime().contains("N/A")) {
+                throw new NoRuntimeException("Error");
+            }
+
+            this.duracionEnMinutos = Integer.parseInt(titulo.runtime().split("\\D{1,3}")[0]);
+        } catch (NumberFormatException | NoRuntimeException e) {
+            this.duracionEnMinutos = 0;
+        }
     }
 
     public String getNombre() {
